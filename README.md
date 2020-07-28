@@ -1,4 +1,4 @@
-# algorand-cron
+# algorand-listener
 
 ## Installation
 
