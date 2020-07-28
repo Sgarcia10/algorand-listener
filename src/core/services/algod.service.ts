@@ -25,7 +25,11 @@ export class AlgodService implements OnModuleInit {
 
   async onModuleInit() {
     this.logger.setContext(AlgodService.name);
-    await this.listen();
+    try {
+      await this.listen();
+    } catch (error) {
+      this.logger.error(error);
+    }
   }
 
   async listen() {
@@ -133,7 +137,7 @@ export class AlgodService implements OnModuleInit {
         tx.txn.rcv,
         tx.txn.amt,
         undefined,
-        tx.txn.note ?? new Uint8Array(Buffer.from(tx.txn.note, 'base64')),
+        tx.txn.note ? new Uint8Array(Buffer.from(tx.txn.note, 'base64')) : undefined,
         paramsCamel
       );
 
