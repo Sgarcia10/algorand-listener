@@ -1,18 +1,16 @@
 import { Injectable, Inject, OnModuleInit } from '@nestjs/common';
 import { Logger } from '../../domain/logger/logger.service';
 import { AlgodClient } from 'src/client/algod.client';
-import { AccountResponse } from 'src/common/dtos/response/account.dto';
 import { ConfigService } from 'src/config/config.service';
 import * as algosdk from 'algosdk';
 import { Accounts } from 'src/domain/constants/accounts.constant';
 import { TransactionParams } from 'src/domain/models/transactionParams.model';
-import { CreateTransactionRequest } from 'src/common/dtos/request/createTransaction.dto';
-import { TransactionParamsResponse } from 'src/client/dtos/response/transactionParams.dto';
 import { CreateTransactionResponse } from 'src/common/dtos/response/tx.dto';
 import { AlgodRepository } from '../repository/algod.repository';
 import * as util from 'util';
 import { TransactionModel } from 'src/domain/models/transaction.model';
 import { AccountTransactionsPendingResponse } from 'src/client/dtos/response/accountTransactionsPending.dto';
+import { TransactionParamsResponse } from 'src/client/dtos/response/transactionParams.dto';
 
 @Injectable()
 export class AlgodService implements OnModuleInit {

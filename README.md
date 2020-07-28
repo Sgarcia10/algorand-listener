@@ -1,4 +1,4 @@
-# algorand-api
+# algorand-cron
 
 ## Installation
 
