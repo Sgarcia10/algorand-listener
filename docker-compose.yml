@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:11.5-alpine
+    environment:
+
+  test:
+    depends_on:
+      - postgres
+    image: node:11-alpine
+    volumes:
+      - ${MY_WORKSPACE}:/ws
+    working_dir: /ws${WORKSPACE_PATH:-/}
+    user: ${MY_USER:-root}
+    command: >
+      sh -c "
+        npm ci &&
+        npm run lint &&
+        export $$(cat .env.example | xargs) &&
+        export NODE_ENV=ci &&
+        npm run test
+      "
